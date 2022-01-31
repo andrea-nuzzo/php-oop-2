@@ -11,6 +11,7 @@
             $this->userName =  $this->setUserName($_userName);
             $this->email = $this->setEmail($_email);
             $this->password = $this->setPassword($_password);
+
         }
          //Funzione che controlla il valore userName
         public function setUserName($_userName){
@@ -33,10 +34,6 @@
             return $_password;
         }
         
-        /***** NATURALMENTE TUTTI QUESTI VAOLORI DOVREBBERO ESSERE $_POST[] POSTATI ALL'INTERNO DI UN DB E CONTROLLARE CHE EMAIL E USERNAME SIANO UNIQUE*****/
-       
-
-
+        /***** NATURALMENTE TUTTI QUESTI VALORI DOVREBBERO ESSERE $_POST[] POSTATI ALL'INTERNO DI UN DB E CONTROLLARE CHE EMAIL E USERNAME SIANO UNIQUE*****/
     }
-
 ?>
