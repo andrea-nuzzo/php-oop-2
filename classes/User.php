@@ -1,7 +1,8 @@
 <?php
     class User {
-        private $lastName;
-        private $fisrtName;
+        protected $userID;
+        protected $firstName;
+        protected $lastName;
         private $userName;
         private $email;
         private $password;
