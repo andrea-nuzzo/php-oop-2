@@ -42,11 +42,11 @@
         try {
             // Se lo storico di acquisti è inferiore a 50 allora sara un normale utente ...
             if($data_user['totalPurchases'] < 50){
-                $users [] = new User($data_user['userID'], $data_user['firstName'],$data_use['lastName'],$data_user['email'],$data_user['password']);
+                $users [] = $data_user['userID']= new User($data_user['userID'], $data_user['firstName'],$data_user['lastName'],$data_user['email'],$data_user['password']);
             } 
             //... altrimenti sarà un utente premium
             else{
-                $users [] = new PremiumUser($data_user['userID'], $data_user['firstName'],$data_user['lastName'],$data_user['email'],$data_user['password'], $data_user['totalPurchases']);
+                $users [] = $data_user['userID'] = new PremiumUser($data_user['userID'], $data_user['firstName'],$data_user['lastName'],$data_user['email'],$data_user['password'], $data_user['totalPurchases']);
             }
             
         }catch (Exception $e){
