@@ -1,30 +1,33 @@
 <?php
+     require_once __DIR__ . "/CreditCard.php";
+
     class User {
         protected $userID;
         protected $firstName;
         protected $lastName;
-        private $userName;
         private $email;
         private $password;
+        public $creditCard = [];
 
-        public function __construct($_userName, $_email, $_password)
-        {
-            $this->userName =  $this->setUserName($_userName);
+        public function __construct($_userID, $_firstName, $_lastName, $_email, $_password)
+        {   
+            $this->userID = $_userID;
+            $this->firstName =  $this->setfirstName($_firstName);
+            $this->lastName = $_lastName;
             $this->email = $this->setEmail($_email);
             $this->password = $this->setPassword($_password);
-
         }
-         //Funzione che controlla il valore userName
-        public function setUserName($_userName){
-          if(strlen($_userName) < 4 ){
-              throw new Exception("The username must contain at least 4 characters");
+         //Funzione che controlla il valore firstName
+        public function setfirstName($_firstName){
+          if(strlen($_firstName) < 4 ){
+              throw new Exception("The firstname must contain at least 4 characters");
           } else{
-              return $_userName;
+              return $_firstName;
           }
         }
         //Funzione che controlla il valore email
         public function setEmail($_email){
-            if(!strpos($_email, "@") && !strpos($_email, ".")){
+            if(!strpos($_email, "@") or !strpos($_email, ".")){
                 throw new Exception("The email must contain at least one at and one dot");
             }else{
                 return $_email;
@@ -34,7 +37,10 @@
         public function setPassword($_password){
             return $_password;
         }
-        
-        /***** NATURALMENTE TUTTI QUESTI VALORI DOVREBBERO ESSERE $_POST[] POSTATI ALL'INTERNO DI UN DB E CONTROLLARE CHE EMAIL E USERNAME SIANO UNIQUE*****/
-    }
+
+        public function newCreditCard($_numerCC, $expiryDate,$_cvv){
+            $this->creditCard[] = new CreditCard( $this-> userID, $this->firstName, $this->lastName, $_numerCC, $expiryDate, $_cvv);
+        }
+
+    }    
 ?>

@@ -3,12 +3,11 @@
         private $totalPurchases;
         private $discount;
 
-        public function __construct($_userName, $_email, $_password, $_totalPurchases=NULL)
+        public function __construct($_userID, $_firstName, $_lastName, $_email, $_password, $_totalPurchases=NULL)
         {
-            parent:: __construct($_userName, $_email, $_password);
+            parent:: __construct($_userID, $_firstName, $_lastName, $_email, $_password);
             $this->totalPurchases = $_totalPurchases;
 
-            //E' CORRETTO RICHIAMARE QUESTA FUNZIONE QUI ???
             $this->discount = $this->setDiscount($_totalPurchases);
 
         }
@@ -23,9 +22,5 @@
                 return $this->discount = 0;
             }
         }
-
-
-
-
     }
 ?>
